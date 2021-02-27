@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{
+            margin-top: 70px;
+            background: #333;
+            color: #fff;
+        }
+    </style>
+    <title>Length Converter</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="display-4 text-center mb-3">Length Converter</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="meterInput">Meter: </label>
+                        <input name="meter" id="meterInput" type="number" class="inputs form-control form-control-lg" placeholder="Enter Meters...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cmInput">cm: </label>
+                        <input name="cm" id="cmInput" type="number" class="inputs form-control form-control-lg" placeholder="Enter cms...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inchInput">Inch: </label>
+                        <input name="inch" id="inchInput" type="number" class="inputs form-control form-control-lg" placeholder="Enter inchs...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feetInput">Feet: </label>
+                        <input name="feet" id="feetInput" type="number" class="inputs form-control form-control-lg" placeholder="Enter feet...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="yardInput">Yard: </label>
+                        <input name="yard" id="yardInput" type="number" class="inputs form-control form-control-lg" placeholder="Enter yards...">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const inputs = document.getElementsByClassName("inputs")
+
+        const meterInputObj = document.getElementById('meterInput')
+        const cmInputObj = document.getElementById('cmInput')
+        const inchInputObj = document.getElementById('inchInput')
+        const feetInputObj = document.getElementById('feetInput')
+        const yardInputObj = document.getElementById('yardInput')
+
+
+        for(let i=0; i<inputs.length; i++) {
+            let input = inputs[i]
+
+            input.addEventListener("input", function(e){
+                let value = parseFloat(e.target.value)
+
+                console.log("the name of input box: ", e.target.name)
+                console.log("the value of input box: ", e.target.value)
+                
+                switch(e.target.name) {
+                    case "meter":
+                        cmInputObj.value = value*1000
+                        inchInputObj.value = value*39.37
+                        feetInputObj.value = value*3.2808
+                        yardInputObj.value = value*1.0936
+                        break
+                    case "cm":
+                        meterInputObj.value = value*0.001
+                        inchInputObj.value = value*0.03937
+                        feetInputObj.value = value*0.0032808
+                        yardInputObj.value = value*0.0010936
+                        break
+                    case "inch":
+                        meterInputObj.value = value*0.0254
+                        cmInputObj.value = value*2.54
+                        feetInputObj.value = value*0.8333
+                        yardInputObj.value = value*0.0277
+                        break
+                    case "feet":
+                        meterInputObj.value = value*0.3048
+                        cmInputObj.value = value*304.8
+                        inchInputObj.value = value*12
+                        yardInputObj.value = value*0.3333
+                        break
+                    case "yard":
+                        meterInputObj.value = value*0.9144
+                        cmInputObj.value = value*914.4
+                        inchInputObj.value = value*36
+                        feetInputObj.value = value*3
+                        break
+                    
+                    
+
+                }
+
+            })
+        }
+
+
+    </script>
+</body>
+</html>
